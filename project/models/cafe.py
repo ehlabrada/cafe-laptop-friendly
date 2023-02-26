@@ -14,6 +14,14 @@ class Cafe(db.Model):
     is_quiet = db.Column(db.Boolean, nullable=False)
     is_allow_calls = db.Column(db.Boolean, nullable=False)
 
+    creator_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    # cafe_creator = db.relationship("User", backref="cafes_list", lazy=True)
+
+    comments = db.relationship("Comment", backref="cafes", lazy=True)
+
+    def __repr__(self) -> str:
+        return f"<Cafe {self.name}>"
+
 
 
 
