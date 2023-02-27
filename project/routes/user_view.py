@@ -22,11 +22,12 @@ def get_all_users():
 
 @user.route("/register", methods=["GET", "POST"])
 def register():
+    register_form = RegisterForm()
+
     if current_user.is_authenticated:
         return redirect(url_for('cafe.home'))
 
     if request.method == "POST":
-        register_form = RegisterForm()
         username = register_form.username.data
 
         user = db.session.execute(db.select(User).where(User.username == username))

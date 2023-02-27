@@ -43,9 +43,14 @@
 				</tr>
 
 
+
 				</tbody>
 			</table>
 		</div>
+		{% if current_user_id == cafe.creator_id %}
+			<a class="btn btn-primary" href="{{ url_for('cafe.edit_cafe', id=cafe.id) }}"> Edit cafe</a>
+			<a class="btn btn-primary" href="{{ url_for('cafe.delete', id=cafe.id) }}"> Delete cafe</a>
+		{% endif %}
 	</div>
 </div>
 

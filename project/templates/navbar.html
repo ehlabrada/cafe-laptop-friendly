@@ -9,8 +9,9 @@
 				<a href="{{ url_for('cafe.home') }}" class="nav-item nav-link active">Home</a>
 				<a href="#" class="nav-item nav-link">Profile</a>
 				<!-- <a href="#" class="nav-item nav-link">Users</a>-->
+				<a href="{{ url_for('cafe.add_cafe') }}" class="nav-item nav-link">Add cafe</a>
 
-				<a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>
+				<!--<a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>-->
 			</div>
 			<div class="navbar-nav ms-auto">
 				{% if current_user.is_authenticated %}
