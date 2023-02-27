@@ -1,20 +1,22 @@
 {% extends 'base.html'  %}
 
 {% block content %}
-	<h2>This is from the index of cafes</h2>
+<h2>Let's see if we can find a cafe that fits with your needs</h2>
 <div class="row row-cols-1 row-cols-md-2 g-4">
+	{% for cafe in cafes %}
 
 	<!-- CARD	-->
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-
+	<a href="{{ url_for('cafe.cafe_detail', id=cafe.id) }}" style="text-decoration: none; color:none;">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">{{ cafe.name }}</h5>
+					<p class="card-text">{{ cafe.location }}</p>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</a>
 
 
 </div>

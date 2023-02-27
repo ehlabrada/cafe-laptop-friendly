@@ -1,18 +1,20 @@
+from flask_login import UserMixin
+
 from project.extensions import db
 
 
-class Cafe(db.Model):
+class Cafe(db.Model, UserMixin):
     __tablename__ = "cafes"
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     location = db.Column(db.String(100), nullable=False)
     tables_quantity = db.Column(db.String(100), nullable=False)
-    long_stay = db.Column(db.Boolean, nullable=False)
-    has_wifi = db.Column(db.Boolean, nullable=False)
-    has_sockets = db.Column(db.Boolean, nullable=False)
-    is_quiet = db.Column(db.Boolean, nullable=False)
-    is_allow_calls = db.Column(db.Boolean, nullable=False)
+    long_stay = db.Column(db.String(3), nullable=False)
+    has_wifi = db.Column(db.String(3), nullable=False)
+    has_sockets = db.Column(db.String(3), nullable=False)
+    is_quiet = db.Column(db.String(3), nullable=False)
+    is_allow_calls = db.Column(db.String(3), nullable=False)
 
     creator_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     # cafe_creator = db.relationship("User", backref="cafes_list", lazy=True)

@@ -1,7 +1,9 @@
+from flask_login import UserMixin
+
 from project.extensions import db
 
 
-class Comment(db.Model):
+class Comment(db.Model, UserMixin):
     __tablename__ = "comments"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -12,7 +14,7 @@ class Comment(db.Model):
     cafe_id = db.Column(db.Integer, db.ForeignKey("cafes.id"))
     # cafe = db.relationship("Cafe", backref="comments_cafes", lazy=True)
 
-    # Relation with users
+    # Relation with user
     creator_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     # comment_creator = db.relationship('User', backref="comments_list", lazy=True)
 
